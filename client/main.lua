@@ -280,108 +280,112 @@ end)
 
 CreateThread(function()
   for k, v in pairs(Config.MiningLocation) do
-    exports['qtarget']:AddBoxZone("Mining"..k, v.coords, 3.5, 3, {
-      name = "Mining"..k,
-      heading = 15,
-      debugPoly = false,
-      minZ = v.coords - 1,
-      maxZ = v.coords + 1,
-    }, {
+
+    exports.ox_target:addBoxZone({
+      coords = v.coords,
+      size = vec3(3.5,3,2),
+      rotation = 15,
+      debug = drawZones,
+      options = {
+              {
+                name = "Mining"..k,
+                event = "esx-mining:mine",
+                icon = "Fas Fa-hands",
+                label = 'Start Mining',
+                canInteract = function(entity, distance, coords, name)
+                    return true
+                end
+              }
+  }
+})
+  end
+  exports.ox_target:addBoxZone({
+    coords = MiningLocation.targetZone,
+    size = vec3(1,1,1),
+    rotation = MiningLocation.targetHeading,
+      debug = drawZones,
       options = {
         {
-          type = "client",
-          event = "esx-mining:mine",
+          name ='MinerBoss',
+          event = "esx-mining:minermenu",
           icon = "Fas Fa-hands",
-          location = k,
-          label = "Start Mining",
-        },
-      },
-      distance = 3.5
-    })
-  end
-  exports['qtarget']:AddBoxZone("MinerBoss", MiningLocation.targetZone, 1, 1, {
-    name = "MinerBoss",
-    heading = MiningLocation.targetHeading,
-    debugPoly = false,
-    minZ = MiningLocation.minZ,
-    maxZ = MiningLocation.maxZ,
-  }, {
-    options = {
-      {
-        type = "client",
-        event = "esx-mining:minermenu",
-        icon = "Fas Fa-hands",
-        label = Config.Text['MenuTarget'],
-      },
-    },
-    distance = 1.5
+          label = Config.Text['MenuTarget'],
+          canInteract = function(entity, distance, coords, name)
+            return true
+          end
+        }
+      }
   })
-  exports['qtarget']:AddBoxZone("PanWasher", WashLocation.targetZone, 1, 1, {
-    name = "PanWasher",
-    heading = WashLocation.targetHeading,
-    debugPoly = false,
-    minZ = WashLocation.minZ,
-    maxZ = WashLocation.maxZ,
-  }, {
+  exports.ox_target:addBoxZone({
+    coords = WashLocation.targetZone,
+    size = vec3(1,1,1),
+    rotation = WashLocation.targetHeading,
+    debug = drawZones,
     options = {
       {
-        type = "client",
+        name = 'PanWasher',
         event = "esx-mining:panmenu",
         icon = "Fas Fa-hands",
         label = Config.Text['Menu_pTarget'],
+        canInteract = function(entity, distance, coords, name)
+          return true
+        end
       },
     },
-    distance = 1.5
+
   })
-  exports['qtarget']:AddBoxZone("Water", vector3(54.77, 3160.31, 25.62), 38.2, 8, {
-    name = "Water",
-    heading = 155,
-    debugPoly = false,
-    minZ=22.82,
-    maxZ=26.62
-  }, {
+  exports.ox_target:addBoxZone({
+    coords = vec3(54.77, 3160.31, 25.62),
+    size =  vec3(2,2,2),
+    rotation = 155,
+    debug = drawZones,
     options = {
       {
-        type = "client",
+        name = "Water",  
         event = "esx-mining:washingrocks",
         icon = "Fas Fa-hands",
         label = Config.Text['Washing_Target'],
-      },
-    },
-    distance = 3.0
+        canInteract = function(entity, distance, coords, name)
+          return true
+        end
+      }
+    }
   })
-  exports['qtarget']:AddBoxZone("smelt", vector3(1086.38, -2003.69, 31.42), 3.8, 3, {
-    name = "smelt",
-    heading = 319,
-    debugPoly = false,
-    minZ = 31.42,
-    maxZ = 32.22
-  }, {
+ -- Smelt ox_target         
+  exports.ox_target:addBoxZone({
+    coords = vec3(1086.38, -2003.69, 31.42),
+    size = vec3(2, 2, 2),
+    rotation = 319,
+    debug = drawZones,
     options = {
       {
-        type = "client",
+        name = "smelt",  
         event = "esx-mining:smeltmenu",
         icon = "Fas Fa-hands",
         label = Config.Text['Smeth_Rocks'],
-      },
-    },
-    distance = 1.5
+        canInteract = function(entity, distance, coords, name)
+            return true
+        end
+      }
+    }
   })
-  exports['qtarget']:AddBoxZone("Seller", SellLocation.targetZone, 1, 1, {
-    name = "Seller",
-    heading = SellLocation.targetHeading,
-    debugPoly = false,
-    minZ = SellLocation.minZ,
-    maxZ = SellLocation.maxZ,
-  }, {
+  -- Seller ox_target 
+  exports.ox_target:addBoxZone({
+    coords = vec3(SellLocation.targetZone),
+    size = vec3(2, 2, 2),
+    rotation = SellLocation.targetHeading,
+    debug = drawZones,
     options = {
       {
-        type = "server",
+        name = "Seller",
         event = "esx-mining:Seller",
         icon = "Fas Fa-hands",
         label = Config.Text['Seller'],
-      },
-    },
-    distance = 1.5
+        canInteract = function(entity, distance, coords, name)
+          return true
+        end
+      }
+    }
+   
   })
 end)
