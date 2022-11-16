@@ -353,9 +353,9 @@ CreateThread(function()
   })
  -- Smelt ox_target         
   exports.ox_target:addBoxZone({
-    coords = vec3(1086.38, -2003.69, 31.42),
-    size = vec3(2, 2, 2),
-    rotation = 319,
+    coords = vec3(1086.3, -2003.96, 30.88),
+    size = vec3(3.9, 4, 4),
+    rotation = 322,
     debug = drawZones,
     options = {
       {
@@ -369,6 +369,7 @@ CreateThread(function()
       }
     }
   })
+
   -- Seller ox_target 
   exports.ox_target:addBoxZone({
     coords = vec3(SellLocation.targetZone),
