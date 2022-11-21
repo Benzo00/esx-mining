@@ -96,7 +96,7 @@ RegisterNetEvent('esx-mining:receivedReward', function()
     end
 
     if minerstone.count >= amount then 
-        xPlayer.removeInventoryItem('minerstone', amount)
+        xPlayer.removeInventoryItem('mining_stone', amount)
         xPlayer.addInventoryItem(ChanceItem[1], ChanceItem[2])
     end
 end)
