@@ -134,7 +134,7 @@ RegisterNetEvent('esx-mining:smeltmenu', function()
 
   RegisterNetEvent('esx-mining:mine', function(data)
     local mining = data.location
-        if not Config.MiningLocation[mining]["isMined"] and not Config.MiningLocation[mining]["isOccupied"] then
+       -- if not Config.MiningLocation[mining]["isMined"] and not Config.MiningLocation[mining]["isOccupied"] then
           ESX.TriggerServerCallback('esx-mining:pickaxe', function(PickAxe)
             if PickAxe then
               StartMining(mining)
@@ -142,7 +142,7 @@ RegisterNetEvent('esx-mining:smeltmenu', function()
               ESX.ShowNotification(Config.Text['error_mining'])
             end
           end)
-        end
+       -- end
   end)
 
 RegisterNetEvent('esx-mining:washingrocks', function()

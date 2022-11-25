@@ -18,14 +18,14 @@ MiningLocation = {
     maxZ = 132.42,                                                  -- Max Z
 },
 WashLocation = {
-    targetZone = vector3(77.17, 3150.86, 28.79),
-    targetHeading = 80.46,
+    targetZone = vector3(56, 3159, 25.75),
+    targetHeading = 338.0,
     coords = vector4(77.17, 3150.86, 28.79, 80.46),
     Sprite = 162,
     Display = 6,
     Scale = 0.85,
     Colour = 26,
-    Label = "Mine Washing Location",
+    Label = "Stone Washing Location",
     minZ = 27,
     maxZ = 31,
 },
